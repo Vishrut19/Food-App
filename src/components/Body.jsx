@@ -1,6 +1,5 @@
 import React from "react";
-import "./Body-style.css";
-import RestaurantCard from "../Restaurant/RestaurantCard";
+import RestaurantCard from "./RestaurantCard";
 
 const resList = [
   {
@@ -101,113 +100,6 @@ const resList = [
       avgRating: "4.2",
       totalRatings: 10000,
       new: false,
-    },
-    subtype: "basic",
-  },
-  {
-    type: "restaurant",
-    data: {
-      type: "F",
-      id: "701653",
-      name: "Coco's kitchen",
-      uuid: "cbb20ef9-dfc0-4b79-b574-8753b99350c1",
-      city: "7",
-      area: "Dumdum",
-      totalRatingsString: "Too Few Ratings",
-      cloudinaryImageId: "",
-      cuisines: ["Indian"],
-      tags: [],
-      costForTwo: 15000,
-      costForTwoString: "₹150 FOR TWO",
-      deliveryTime: 37,
-      minDeliveryTime: 37,
-      maxDeliveryTime: 37,
-      slaString: "37 MINS",
-      lastMileTravel: 4.5,
-      slugs: {
-        restaurant: "coco's-kitchen-dumdum-dumdum",
-        city: "kolkata",
-      },
-      cityState: "7",
-      address:
-        "Roy Para Rd, Roy Para, Sinthee, Kolkata, West Bengal 700050, India",
-      locality: "Roy Para Rd",
-      parentId: 386123,
-      unserviceable: false,
-      veg: false,
-      select: false,
-      favorite: false,
-      tradeCampaignHeaders: [],
-      ribbon: [
-        {
-          type: "PROMOTED",
-        },
-      ],
-      chain: [],
-      feeDetails: {
-        fees: [
-          {
-            name: "distance",
-            fee: 4000,
-            message: "",
-          },
-          {
-            name: "time",
-            fee: 0,
-            message: "",
-          },
-          {
-            name: "special",
-            fee: 0,
-            message: "",
-          },
-        ],
-        totalFees: 4000,
-        message: "",
-        title: "Delivery Charge",
-        amount: "4000",
-        icon: "",
-      },
-      availability: {
-        opened: true,
-        nextOpenMessage: "",
-        nextCloseMessage: "",
-      },
-      longDistanceEnabled: 0,
-      rainMode: "NONE",
-      thirdPartyAddress: false,
-      thirdPartyVendor: "",
-      adTrackingID: "cid=7105172~p=7~eid=00000188-b9d3-2dba-04b3-f73c0097074d",
-      badges: {
-        imageBased: [],
-        textBased: [],
-        textExtendedBadges: [],
-      },
-      lastMileTravelString: "4.5 kms",
-      hasSurge: false,
-      aggregatedDiscountInfoV3: {
-        header: "30% OFF",
-        subHeader: "UPTO ₹150",
-        discountTag: "SAVE BIG",
-        headerTypeV2: 0,
-      },
-      sla: {
-        restaurantId: "701653",
-        deliveryTime: 37,
-        minDeliveryTime: 37,
-        maxDeliveryTime: 37,
-        lastMileTravel: 4.5,
-        lastMileDistance: 0,
-        serviceability: "SERVICEABLE",
-        rainMode: "NONE",
-        longDistance: "NOT_LONG_DISTANCE",
-        preferentialService: false,
-        iconType: "EMPTY",
-      },
-      promoted: true,
-      avgRating: "--",
-      totalRatings: 0,
-      new: true,
     },
     subtype: "basic",
   },
@@ -431,8 +323,11 @@ const Body = () => {
       <div className="search">Search</div>
       <div className="res-container">
         {/*This is a typical example of Reusable Component*/}
-        <RestaurantCard resData={resList[0]} />
-        <RestaurantCard resData={resList[2]} />
+        {/* <RestaurantCard resData={resList[0]} />
+        <RestaurantCard resData={resList[2]} /> */}
+        {resList.map((restaurant) => (
+          <RestaurantCard key={restaurant.data.id} resData={restaurant} />
+        ))}
       </div>
     </div>
   );

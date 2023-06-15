@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import React from "react";
-import "./RestaurantCard.css";
 
 const RestaurantCard = ({ resData }) => {
   // This is Optional Chaining
@@ -17,10 +16,7 @@ const RestaurantCard = ({ resData }) => {
     <div className="res-card">
       <img
         className="res-logo "
-        src={
-          "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/" +
-          cloudinaryImageId
-        }
+        src={`https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/${cloudinaryImageId}`}
         alt="restaurant logo"
       />
       <h3>{name}</h3>
