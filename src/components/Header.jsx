@@ -1,14 +1,11 @@
 import React from "react";
+import { LOGO_URL } from "../utils/constants";
 
 const Header = () => {
   return (
     <div className="header">
       <div className="logo-container">
-        <img
-          className="logo"
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0s_OFvkP9t7db7NW9N2wlKa1UGnIrp4ZRSb-PceQ&s"
-          alt=""
-        />
+        <img className="logo" src={LOGO_URL} alt="logo image" />
       </div>
       <div className="nav-items">
         <ul>
