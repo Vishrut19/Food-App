@@ -1,12 +1,17 @@
 import { useState, useEffect } from "react";
 import RestaurantCard from "./RestaurantCard";
-import resList from "../utils/mockData";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   // useState Hook
   // But is more like array destructuring
   const [listofRestaurant, setListofRestaurant] = useState([]);
+  const [searchText, setSearchText] = useState("");
+  const [filteredRestaurant, setFilteredRestaurant] = useState([]); //Th is is used to create a copy of filtered restaurants.
+
+  // ! Whenever state variable updates, react triggers a reconciliation cycle(re-renders the components)
+  // console.log("Body is rendering again and again");
 
   useEffect(() => {
     fetchData();
@@ -19,24 +24,47 @@ const Body = () => {
     const json = await data.json();
     //! optional chaining is best way to render data from an API
     setListofRestaurant(json?.data?.cards[2]?.data?.data?.cards);
+    setFilteredRestaurant(json?.data?.cards[2]?.data?.data?.cards);
   };
-
-  console.log("body rendered");
 
   const handleFilter = () => {
-    console.log(listofRestaurant);
-    const filterList = listofRestaurant.filter((res) => res.data.avgRating > 4);
-    console.log(filterList);
-    setListofRestaurant(filterList);
+    const filteredList = listofRestaurant.filter(
+      (res) => res.data.avgRating > 4
+    );
+    setListofRestaurant(filteredList);
   };
 
-  if (listofRestaurant.length === 0) {
-    return <Shimmer />;
-  }
+  // Filter the restaurants and Update the UI
+  // searchText
+  const handleSearch = () => {
+    setFilteredRestaurant(
+      listofRestaurant.filter((res) =>
+        res.data.name.toLowerCase().includes(searchText.toLowerCase())
+      )
+    );
+  };
 
-  return (
+  //! Conditional Rendering
+  // if (listofRestaurant.length === 0) {
+  //   return <Shimmer />;
+  // }
+
+  return listofRestaurant.length === 0 ? (
+    <Shimmer />
+  ) : (
     <div className="body">
       <div className="filter">
+        <div className="search">
+          <input
+            type=" text"
+            className="search-box"
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
+          />
+          <button className="search-btn" onClick={handleSearch}>
+            Search
+          </button>
+        </div>
         <button className="filter-btn" onClick={handleFilter}>
           Top Rated Restaurants
         </button>
@@ -44,8 +72,14 @@ const Body = () => {
       <div className="res-container">
         {/*This is a typical example of Reusable Component*/}
         {/* <RestaurantCard resData={resList[0]} />*/}
-        {listofRestaurant.map((restaurant) => (
-          <RestaurantCard key={restaurant.data.id} resData={restaurant} />
+        {filteredRestaurant.map((restaurant) => (
+          // Here we are dynamically routing to each restaurant to each restaurant page
+          <Link
+            to={"/restaurants/" + restaurant.data.id}
+            key={restaurant.data.id}
+          >
+            <RestaurantCard resData={restaurant} />
+          </Link>
         ))}
       </div>
     </div>

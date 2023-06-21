@@ -1,9 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap");
+
+:root {
+  --font-fallback: "Comic Neue";
+}
+
 /* Header Style */
 .header {
   display: flex;
   justify-content: space-between;
   border: 1px solid rgb(63, 63, 72);
   border-radius: 5px;
+  font-family: var(--font-fallback);
 }
 
 .logo {
@@ -21,6 +28,11 @@
 }
 
 /* Body Style  */
+
+.body {
+  font-family: var(--font-fallback);
+}
+
 .search {
   padding: 10px;
 }
@@ -48,9 +60,23 @@
   width: 100%;
 }
 
+.filter {
+  display: flex;
+}
+
+.search-btn {
+  margin-left: 10px;
+}
+
 /* Filter Button */
 .filter-btn {
   margin: 10px;
+  cursor: pointer;
+}
+
+/* Login Button */
+.login-btn {
+  margin: 0px 20px;
   cursor: pointer;
 }
 
@@ -69,3 +95,10 @@
   height: 400px;
   overflow-wrap: anywhere;
 }
+
+/* Contact Us page  */
+.contactus {
+  font-family: var(--font-fallback);
+}
+
+/* About us page */
