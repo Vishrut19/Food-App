@@ -1,0 +1,104 @@
+@import url("https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap");
+
+:root {
+  --font-fallback: "Comic Neue";
+}
+
+/* Header Style */
+.header {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid rgb(63, 63, 72);
+  border-radius: 5px;
+  font-family: var(--font-fallback);
+}
+
+.logo {
+  width: 100px;
+}
+.nav-items > ul {
+  display: flex;
+  list-style: none;
+  font-size: 20px;
+}
+
+.nav-items > ul > li {
+  padding: 10px;
+  margin: 10px;
+}
+
+/* Body Style  */
+
+.body {
+  font-family: var(--font-fallback);
+}
+
+.search {
+  padding: 10px;
+}
+
+.res-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Restaurant Card Style */
+.res-card {
+  margin: 10px;
+  background-color: #dbd0d0;
+  padding: 5px;
+  width: 300px;
+  overflow-wrap: anywhere;
+}
+
+.res-card:hover {
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.res-logo {
+  width: 100%;
+}
+
+.filter {
+  display: flex;
+}
+
+.search-btn {
+  margin-left: 10px;
+}
+
+/* Filter Button */
+.filter-btn {
+  margin: 10px;
+  cursor: pointer;
+}
+
+/* Login Button */
+.login-btn {
+  margin: 0px 20px;
+  cursor: pointer;
+}
+
+/* Shimmer Cards */
+
+.shimmer-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.shimmer-card {
+  margin: 10px;
+  background-color: #dbd0d0;
+  padding: 5px;
+  width: 300px;
+  height: 400px;
+  overflow-wrap: anywhere;
+}
+
+/* Contact Us page  */
+.contactus {
+  font-family: var(--font-fallback);
+}
+
+/* About us page */
