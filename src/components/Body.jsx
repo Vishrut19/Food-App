@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
   // useState Hook
@@ -26,6 +27,16 @@ const Body = () => {
     setListofRestaurant(json?.data?.cards[2]?.data?.data?.cards);
     setFilteredRestaurant(json?.data?.cards[2]?.data?.data?.cards);
   };
+
+  const onlineStatus = useOnlineStatus();
+
+  if (onlineStatus === false)
+    return (
+      <h1>
+        Looks Like you are Offline, Please Check your Internet Connection
+        🚀🚀🚀🚀
+      </h1>
+    );
 
   const handleFilter = () => {
     const filteredList = listofRestaurant.filter(
@@ -75,7 +86,7 @@ const Body = () => {
         {filteredRestaurant.map((restaurant) => (
           // Here we are dynamically routing to each restaurant to each restaurant page
           <Link
-            to={"/restaurants/" + restaurant.data.id}
+            to={"/restaurants /" + restaurant.data.id}
             key={restaurant.data.id}
           >
             <RestaurantCard resData={restaurant} />
