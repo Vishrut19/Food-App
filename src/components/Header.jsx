@@ -33,6 +33,9 @@ const Header = () => {
           <li>
             <Link to="/contact">Contact Us</Link>
           </li>
+          <li>
+            <Link to="/grocery">Grocery</Link>
+          </li>
           <li>&#128722;</li>
           <button className="login-btn" onClick={handleLogin}>
             {btnName}
