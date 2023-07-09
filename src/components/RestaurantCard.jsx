@@ -1,5 +1,7 @@
 /* eslint-disable react/prop-types */
+import { useContext } from "react";
 import { CDN_URL } from "../utils/constants";
+import UserContext from "../utils/UserContext";
 
 const RestaurantCard = ({ resData }) => {
   // This is Optional Chaining
@@ -12,6 +14,7 @@ const RestaurantCard = ({ resData }) => {
     deliveryTime,
   } = resData.data;
 
+  const { user } = useContext(UserContext);
   return (
     <div className="res-card">
       <img
@@ -24,6 +27,9 @@ const RestaurantCard = ({ resData }) => {
       <h4>{avgRating} Star Rating</h4>
       <h4>&#8360; {costForTwo / 100} For Two </h4>
       <h4>{deliveryTime} mins</h4>
+      <h5 className="font-bold">
+        {user.name} - {user.email}
+      </h5>
     </div>
   );
 };
